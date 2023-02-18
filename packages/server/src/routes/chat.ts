@@ -31,8 +31,8 @@ router.post("/:roomId", async (req, res) => {
       roomId: req.params.roomId,
     });
 
+    // 해당 채팅방에 소켓으로 에밋!
     const io = req.app.get("io");
-
     io.of("/chat").to(req.params.roomId).emit("chat", chat);
 
     res.json({ message: "OK" });
